@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-8">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">記事</h3>
@@ -18,6 +18,23 @@
               <i class="fa fa-trash fa-2x"></i>
             <% end %>
           </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <!-- コメントを表示させる -->
+      <%= render @story.comments %>
+      <!-- コメントを表示させる -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">コメント作成</h3>
+        </div>
+        <div class="panel-body">
+          <%= render "comments/form" %>
+        </div>
+        <div class="panel-footer">
+
         </div>
       </div>
     </div>

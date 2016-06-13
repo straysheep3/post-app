@@ -15,11 +15,15 @@
             </p>
           </div>
           <div class="panel-footer">
-            <%= link_to "いいね", like_story_path(story), method: :put, class: "btn btn-xs btn-success" %>
+            <%= link_to like_story_path(story), method: :put, class: "btn btn-link btn-xs" do %>
+              <i class="fa fa-2x fa-thumbs-o-up text-info"></i>
+            <% end %>
             <span> <%= story.get_upvotes.size %></span>
-            <%= link_to "悪いね", dislike_story_path(story), method: :put, class: "btn btn-xs btn-danger" %>
+            <%= link_to dislike_story_path(story), method: :put, class: "btn btn-xs btn-link" do %>
+              <i class="fa fa-2x fa-thumbs-o-down text-danger"></i>
+            <% end %>
             <span> <%= story.get_downvotes.size %></span>
-            <a href="#" class="btn btn-link">コメント [3]</a>
+            <a href="#" class="btn btn-link btn-xs"><i class="fa fa-2x fa-comments-o"></i> <%= story.comments.count %> comments</a>
             <span class="pull-right"><small>作者: <%= story.user.name %> | カテゴリー: ◯◯</small></span>
           </div>
         </div>
