@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">記事</h3>
+        </div>
+        <div class="panel-body">
+          <%= @story.body %>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Back", root_path, class: "btn btn-default" %>
+          <span class="pull-right">
+            <%= link_to edit_story_path(@story), class: "btn btn-warning btn-sm" do %>
+              <i class="fa fa-pencil-square-o fa-2x"></i>
+            <% end %>
+            <%= link_to story_path(@story), method: :delete, class: "btn btn-danger btn-sm" do %>
+              <i class="fa fa-trash fa-2x"></i>
+            <% end %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
