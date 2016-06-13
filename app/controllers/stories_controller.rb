@@ -1,8 +1,9 @@
 class StoriesController < ApplicationController
-  before_action :find_story, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :upvote, :downvote]
+  before_action :find_story, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   def index
-    @stories = Story.all.order("created_at desc")
+    @stories = Story.all.order("created_at desc").page(params[:page]).per(5)
   end
 
   def show
@@ -14,6 +15,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
+    @story.user = current_user
     if @story.save
       redirect_to @story
     else
@@ -38,9 +40,19 @@ class StoriesController < ApplicationController
     redirect_to root_path
   end
 
+  def upvote
+    @story.upvote_by(current_user)
+    redirect_to :back
+  end
+
+  def downvote
+    @story.downvote_by(current_user)
+    redirect_to :back
+  end
+
   private
     def story_params
-      params.require(:story).permit(:body)
+      params.require(:story).permit(:body, :title)
     end
 
     def find_story

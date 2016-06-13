@@ -8,8 +8,15 @@
 </head>
 <body>
   <%= render "layouts/header" %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-2">
+        <p class="alert alert-success"><%= notice %></p>
+        <p class="alert alert-danger"><%= alert %></p>
+      </div>
+    </div>
+  </div>
 
   <%= yield %>
-  <script src="https://use.fontawesome.com/f156e52422.js"></script>
 </body>
 </html>

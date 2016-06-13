@@ -8,6 +8,7 @@
         <div class="panel-body">
           <%= simple_form_for @story do |f| %>
             <div class="form-group">
+              <%= f.input :title, class: "form-control" %>
               <%= f.input :body, class: "form-control" %>
               <%= f.button :submit, class: "btn btn-success" %>
             </div>

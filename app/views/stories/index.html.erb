@@ -1,28 +1,33 @@
-
-<div class="container">
-  <div class="row">
-    <%= link_to "新規記事作成", new_story_path, class: "btn btn-primary" %>
-  </div>
-</div>
-<br>
-
 <div class="container">
   <div class="row">
 
     <div class="col-md-8">
       <% @stories.each do |story| %>
-      <div class="well well-sm">
-        <%= story.body %>
-        <p class="text-right">
-          <%= link_to "記事を読む", story_path(story), class: "btn btn-primary" %>
-        </p>
-        <hr>
-        <a href="#" class="btn btn-xs btn-success">いいね</a>
-        <a href="#" class="btn btn-xs btn-danger">bad</a>
-        <a href="#" class="btn btn-link">コメント [3]</a>
-        <span class="pull-right"><small>作者: ◯◯ | カテゴリー: ◯◯</small></span>
-      </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= story.title %></h3>
+          </div>
+          <div class="panel-body">
+            <%= story.body %>
+            <hr>
+            <p class="text-right">
+              <%= link_to "記事を読む", story_path(story), class: "btn btn-primary" %>
+            </p>
+          </div>
+          <div class="panel-footer">
+            <%= link_to "いいね", like_story_path(story), method: :put, class: "btn btn-xs btn-success" %>
+            <span> <%= story.get_upvotes.size %></span>
+            <%= link_to "悪いね", dislike_story_path(story), method: :put, class: "btn btn-xs btn-danger" %>
+            <span> <%= story.get_downvotes.size %></span>
+            <a href="#" class="btn btn-link">コメント [3]</a>
+            <span class="pull-right"><small>作者: <%= story.user.name %> | カテゴリー: ◯◯</small></span>
+          </div>
+        </div>
       <% end %>
+
+      <nav class="text-center">
+        <%= paginate @stories %>
+      </nav>
     </div>
 
     <div class="col-md-4">
