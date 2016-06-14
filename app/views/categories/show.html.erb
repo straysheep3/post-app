@@ -24,15 +24,11 @@
             <% end %>
             <span> <%= story.get_downvotes.size %></span>
             <a href="#" class="btn btn-link btn-xs"><i class="fa fa-2x fa-comments-o"></i> <%= story.comments.count %> comments</a>
-
-            <span class="pull-right"><small>作者: <%= story.user.name %> | カテゴリー: <%= story.category.c_name %></small></span>
+            <span class="pull-right"><small>作者: <%= story.user.name %> | カテゴリー: <%= story.category.c_name %> </small></span>
           </div>
         </div>
       <% end %>
 
-      <nav class="text-center">
-        <%= paginate @stories %>
-      </nav>
     </div>
 
     <div class="col-md-4">
@@ -47,6 +43,7 @@
           <% end %>
         </div>
         <div class="panel-footer">
+          text
         </div>
       </div>
     </div>

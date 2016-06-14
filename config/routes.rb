@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
     resources :comments
   end
+
+  get "/category/:id", to: "categories#show", as: "category"
 end

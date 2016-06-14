@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :upvote, :downvote]
-  before_action :find_story, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :find_story, only: [ :show, :edit, :update, :destroy, :upvote, :downvote]
 
   def index
     @stories = Story.all.order("created_at desc").page(params[:page]).per(5)
@@ -52,7 +52,7 @@ class StoriesController < ApplicationController
 
   private
     def story_params
-      params.require(:story).permit(:body, :title)
+      params.require(:story).permit(:body, :title, :category_id)
     end
 
     def find_story
