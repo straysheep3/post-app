@@ -50,6 +50,13 @@ class StoriesController < ApplicationController
     redirect_to :back
   end
 
+  def user_photos
+    user = User.where(id: params[:id])
+    user_photos = Photo.where(user_id: params[:id])
+    error_message = User.where(id: params[:id]).blank? ? 'Can`t find the user`s photo' : ''
+    render :json => { user_photos: user_photos , error_message: error_message }
+  end
+
   private
     def story_params
       params.require(:story).permit(:body, :title, :category_id)

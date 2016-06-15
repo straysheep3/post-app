@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   end
 
   get "/category/:id", to: "categories#show", as: "category"
+
+  GET test/user_photos/:id
 end
